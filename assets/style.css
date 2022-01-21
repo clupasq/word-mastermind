@@ -1,0 +1,30 @@
+html, body {
+    height: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.header {
+    height: 20vh;
+    background-color: blue;
+    flex: 1;
+}
+
+.board {
+    background-color: red;
+    flex: 6;
+}
+
+.keyboard {
+    background-color: green;
+    flex: 3;
+}
+

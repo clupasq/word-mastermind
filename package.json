@@ -1,7 +1,14 @@
 {
-  "dependencies": {
-    "fastify": "^3.27.0",
-    "fastify-helmet": "^7.0.0",
-    "fastify-static": "^4.5.0"
-  }
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch"
+    },
+    "dependencies": {
+        "fastify": "^3.27.0",
+        "fastify-helmet": "^7.0.0",
+        "fastify-static": "^4.5.0"
+    },
+    "devDependencies": {
+        "jest": "^27.4.7"
+    }
 }
