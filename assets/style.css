@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    margin: 10px;
 }
 
 .main-container {
@@ -9,7 +10,6 @@ html, body {
     text-align: center;
     align-items: center;
     flex-grow: 1;
-    overflow-y: scroll;
     height: 100%;
 }
 
@@ -19,6 +19,7 @@ html, body {
 
 .board {
     flex: 6;
+    overflow-y: auto;
 }
 
 .board-row {
@@ -29,10 +30,13 @@ html, body {
 
 .board-row.current {
     background-color: #eee;
+    border: 3px solid #ccc;
+    border-radius: 10px;
 }
 
 .tile {
     background-color: #ddd;
+    border-radius: 10px;
     width: 62px;
     height: 62px;
     margin: 5px;
@@ -58,8 +62,9 @@ html, body {
 
 .btn.key {
     background-color: #ddd;
-    margin: 4px;
-    padding: 5px;
+    margin: 3px;
+    height: 2.5em;
+    padding: 7px;
     font-family: monospace;
 }
 
@@ -69,4 +74,18 @@ html, body {
 
 .btn.key.right {
     background-color: #6aaa64;
+}
+
+.popup {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    padding: 20px 40px;
+}
+
+.summary {
+}
+
+.error {
 }

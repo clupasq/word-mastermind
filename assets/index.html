@@ -20,6 +20,7 @@
             <div class="board">
                 <div v-if="gameState">
                     <div v-for="row, i in gameState.board"
+                         v-bind:id="'board-row-' + i"
                          v-bind:class="{'board-row': true, current: i === gameState.currentAttempt}">
                         <div v-for="tile in row">
                             <div v-bind:class="{tile: true, [tile.result]: true}">
@@ -41,6 +42,40 @@
                     </button>
                 </div>
             </div>
+
+            <div class="popup summary" v-if="gameState.finished">
+                <div v-if="gameState.won">
+                <h1 class="display-6">Success</h1>
+                <hr />
+                Congratulations, you guessed the word!
+                </div>
+
+                <div v-else>
+                    <h1 class="display-6">Oh, no!</h1>
+                    <hr />
+                    You didn't manage to guess.<br />
+                    The word was:<br />
+                    <h1 class="display-6">
+                        <strong> {{ gameState.revealedWord }} </strong>
+                    </h1>
+
+                </div>
+
+                <hr />
+                <button
+                    class="btn btn-primary"
+                    v-on:click="startGame">
+                    Start a new game
+                </button>
+
+            </div>
+
+            <div class="popup error" v-if="error">
+                <h1 class="display-6">Error</h1>
+                <hr />
+                {{ error }}
+            </div>
+
         </div>
     </body>
 </html>

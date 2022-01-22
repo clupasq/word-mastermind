@@ -28,6 +28,9 @@ const app = new Vue({
                 board: [],
                 wrongKeys: new Set(),
                 rightKeys: new Set(),
+                finished: false,
+                won: false,
+                revealedWord: undefined
             }
 
             for (let i = 0; i < totalAttempts; i++) {
@@ -141,24 +144,27 @@ const app = new Vue({
 
             if (data.won) {
                 this.gameState.finished = true;
-                window.setTimeout(() => {
-                    alert("YOU WON");
-                    this.startGame();
-                }, 100);
+                this.gameState.won = true;
                 return;
             }
 
             if (data.finished) {
-                this.gameState.revealed = data.word;
+                this.gameState.revealedWord = data.word;
                 this.gameState.finished = true;
-                window.setTimeout(() => {
-                    alert("The word was: " + data.word);
-                    this.startGame();
-                }, 100);
                 return;
             }
 
             this.gameState.currentAttempt++;
+            const rowDom = document.getElementById(`board-row-${this.gameState.currentAttempt}`);
+            if (rowDom) {
+                // In case of many attemps, if there's a scrollbar
+                // make sure the current row is visible.
+                if (rowDom.scrollIntoViewIfNeeded) {
+                    rowDom.scrollIntoViewIfNeeded();
+                } else {
+                    rowDom.scrollIntoView();
+                }
+            }
         },
 
 
