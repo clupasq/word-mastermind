@@ -121,6 +121,11 @@ body.dark .btn.key.right {
     padding: 20px 40px;
 }
 
+body.dark .popup {
+    background-color: rgba(70, 70, 70, 0.9);
+    color: #d7dadc;
+}
+
 .shake {
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }

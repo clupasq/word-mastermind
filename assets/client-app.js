@@ -11,6 +11,17 @@ const parseQueryString = () => {
 
 const queryStringParams = parseQueryString();
 
+const isDarkModePreferred = () => {
+    for (const cookie of document.cookie.split("; ")) {
+        const [name, value] = cookie.split("=");
+        if (name === "darkMode" && value === "true") {
+            return true;
+        }
+    }
+
+    return false;
+};
+
 const app = new Vue({
     el: "#app",
 
@@ -26,7 +37,6 @@ const app = new Vue({
         error: undefined,
         darkMode: false
     },
-
 
     methods: {
 
@@ -214,6 +224,7 @@ const app = new Vue({
             } else {
                 body.classList.remove("dark");
             }
+            document.cookie = `darkMode=${this.darkMode}`;
         }
 
     },
@@ -222,7 +233,14 @@ const app = new Vue({
         this.startGame();
 
         document.addEventListener("keyup", async (e) => {
+            if (e.ctrlKey || e.altKey || e.metaKey) {
+                return
+            }
             await this.handleNewLetter(e.key.toUpperCase());
         });
+
+        if (isDarkModePreferred()) {
+            this.toggleDarkMode();
+        }
     },
 })
