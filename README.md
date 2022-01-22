@@ -24,9 +24,9 @@ git clone https://github.com/clupasq/word-mastermind.git
 cd word-mastermind
 ```
 
-There are two options for runnning the program.
+There are two options for runnning the program: with Node.JS or in Docker.
 
-### Running directly
+### Running with node
 
 Make sure you have Node.JS 16 installed.
 
