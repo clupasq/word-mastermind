@@ -15,6 +15,20 @@ You can try it out on Glitch:
 * [English](https://word-mastermind.glitch.me/)
 * [Romanian](https://word-mastermind.glitch.me/?dictName=ro-ro-5)
 
+## How to Play
+
+The goal of the game is to guess a target word.
+
+To do so, you enter guesses and the game will provide feedback for each letter of your guess:
+
+* a letter that is placed in the correct spot will be marked green
+* a letter that is present in the target word, but incorrectly placed will be marked yellow
+* the unmarked letters are simply not present in the target word
+
+All submitted guesses have to be valid words.
+
+To make it easy, the keyboard at the bottom of the screen will highlight the statuses of each letter: present (green), not present (dark gray), unknown (light gray).
+
 ## Running the program
 
 Clone this repo:
