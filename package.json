@@ -10,5 +10,8 @@
     },
     "devDependencies": {
         "jest": "^27.4.7"
+    },
+    "engines": {
+      "node": "16"
     }
 }
