@@ -21,7 +21,7 @@
                 <div v-if="gameState">
                     <div v-for="row, i in gameState.board"
                          v-bind:id="'board-row-' + i"
-                         v-bind:class="{'board-row': true, current: i === gameState.currentAttempt}">
+                         v-bind:class="{'board-row': true, current: i === gameState.currentAttempt, shake: i === gameState.currentAttempt && error}">
                         <div v-for="tile in row">
                             <div v-bind:class="{tile: true, [tile.result]: true}">
                                 {{tile.letter}}

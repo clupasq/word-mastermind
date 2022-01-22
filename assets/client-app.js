@@ -145,6 +145,10 @@ const app = new Vue({
 
             if (data.error) {
                 console.warn(data.error);
+                this.error = data.error;
+                window.setTimeout(() => {
+                    this.error = undefined;
+                }, 1000);
                 return;
             }
 
