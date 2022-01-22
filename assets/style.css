@@ -6,6 +6,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     align-items: center;
     flex-grow: 1;
     overflow-y: scroll;
@@ -13,18 +14,59 @@ html, body {
 }
 
 .header {
-    height: 20vh;
-    background-color: blue;
     flex: 1;
 }
 
 .board {
-    background-color: red;
     flex: 6;
 }
 
+.board-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.board-row.current {
+    background-color: #eee;
+}
+
+.tile {
+    background-color: #ddd;
+    width: 62px;
+    height: 62px;
+    margin: 5px;
+    line-height: 62px;
+    font-family: monospace;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.tile.present {
+    background-color: #c9b458;
+    color: #fff;
+}
+
+.tile.correct {
+    background-color: #6aaa64;
+    color: #fff;
+}
+
 .keyboard {
-    background-color: green;
     flex: 3;
 }
 
+.btn.key {
+    background-color: #ddd;
+    margin: 4px;
+    padding: 5px;
+    font-family: monospace;
+}
+
+.btn.key.wrong {
+    background-color: #777;
+}
+
+.btn.key.right {
+    background-color: #6aaa64;
+}

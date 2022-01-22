@@ -50,7 +50,7 @@ class Game {
         this.word = (options.word || dictionary.selectRandomWord()).toUpperCase()
         this.finished = false
         this.won = false
-        this.currentGuess = -1
+        this.currentGuess = 0
     }
 
     start() {
@@ -67,18 +67,19 @@ class Game {
                 error: "Not in dictionary"
             }
         }
+        if (this.finished) {
+            throw new Error("Game finished")
+        }
         this.currentGuess++
-        if (this.attempts >= this.totalAttempts) {
+
+        if (this.currentGuess >= this.totalAttempts) {
             this.finished = true
             return {
+                result: computeResult(guess, this.word),
                 finished: this.finished,
                 word: this.word,
             }
         }
-        if (this.finished) {
-            throw new Error("Game finished")
-        }
-
         if (guess === this.word) {
             this.won = true
             this.finished = true

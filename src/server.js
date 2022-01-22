@@ -16,7 +16,7 @@ fastify.register(fastifyStatic, {
 fastify.get("/game/start", (req, res) => {
     const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10)
     const game = new Game(dictionary)
-    gamesById[id] = game
+    gamesById.set(id, game)
     return {
         id,
         ...game.start()
@@ -25,7 +25,7 @@ fastify.get("/game/start", (req, res) => {
 
 fastify.post("/game/submit", (req, res) => {
     const {id, guess} = req.body
-    const game = gamesById.get(id)
+    const game = gamesById.get(String(id))
     if (game === undefined) {
         res.callNotFound()
     }
@@ -41,7 +41,7 @@ fastify.post("/game/submit", (req, res) => {
 
 const start = async () => {
     try {
-        dictionary = Dictionary.create("en-us-5")
+        dictionary = await Dictionary.create("en-us-5")
         await fastify.listen(3000)
     } catch (err) {
         fastify.log.error(err)

@@ -60,7 +60,7 @@ describe("Game", () => {
                 })
             })
 
-            test("no further submits allowed", () => {
+            test("no further submits allowed after winning", () => {
                 expect(() => g.submitGuess("robot"))
                     .toThrow("Game finished")
             })
@@ -78,15 +78,53 @@ describe("Game", () => {
             test("valid words - correct signals", () => {
                 expect(g.submitGuess("zebra")).toEqual({
                     result: "00210",
-                    currentGuess: 0,
+                    currentGuess: 1,
                 })
                 expect(g.submitGuess("blood")).toEqual({
                     result: "10120",
-                    currentGuess: 1,
+                    currentGuess: 2,
                 })
             })
 
+
         })
+
+        test("finish in exactly 5 attempts", () => {
+            const g = new Game(DICT, { word: "robot" })
+
+            for (let i = 0; i < 4; i++) {
+                const result = g.submitGuess("zebra");
+                expect(result.word).toBeUndefined();
+                expect(result.finished).toBeUndefined();
+            }
+
+            const finalResult = g.submitGuess("robot");
+            // When the game is over, reveal guess
+            expect(finalResult.won).toBe(true);
+            expect(finalResult.finished).toBe(true);
+
+            // Subsequent calls get an error
+            expect(() => g.submitGuess("robot")).toThrow("")
+        })
+
+        test("after 5 attempts, the game ends", () => {
+            const g = new Game(DICT, { word: "robot" })
+
+            for (let i = 0; i < 4; i++) {
+                const result = g.submitGuess("zebra");
+                expect(result.word).toBeUndefined();
+                expect(result.finished).toBeUndefined();
+            }
+
+            const finalResult = g.submitGuess("zebra");
+            // When the game is over, reveal guess
+            expect(finalResult.word).toEqual("ROBOT");
+            expect(finalResult.finished).toBe(true);
+
+            // Subsequent calls get an error
+            expect(() => g.submitGuess("robot")).toThrow("")
+        })
+
 
     })
 
