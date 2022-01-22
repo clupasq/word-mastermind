@@ -3,6 +3,10 @@ html, body {
     margin: 10px;
 }
 
+body.dark {
+    background-color: #3a3a3c;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -15,6 +19,10 @@ html, body {
 
 .header {
     flex: 1;
+}
+
+body.dark .header {
+    color: #d7dadc;
 }
 
 .board {
@@ -32,6 +40,11 @@ html, body {
     background-color: #eee;
     border: 3px solid #ccc;
     border-radius: 10px;
+}
+
+body.dark .board-row.current {
+    background-color: #888;
+    border: 3px solid #555;
 }
 
 .tile {
@@ -56,6 +69,18 @@ html, body {
     color: #fff;
 }
 
+body.dark .tile {
+    background-color: #777;
+}
+
+body.dark .tile.present {
+    background-color: #c9b458;
+}
+
+body.dark .tile.correct {
+    background-color: #6aaa64;
+}
+
 .keyboard {
     flex: 3;
 }
@@ -76,18 +101,24 @@ html, body {
     background-color: #6aaa64;
 }
 
+body.dark .btn.key {
+    background-color: #777;
+}
+
+body.dark .btn.key.wrong {
+    background-color: #444;
+}
+
+body.dark .btn.key.right {
+    background-color: #6aaa64;
+}
+
 .popup {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.9);
     border: 3px solid #ddd;
     border-radius: 10px;
     padding: 20px 40px;
-}
-
-.summary {
-}
-
-.error {
 }
 
 .shake {

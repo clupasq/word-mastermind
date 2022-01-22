@@ -23,7 +23,8 @@ const app = new Vue({
         ],
 
         gameState: undefined,
-        error: undefined
+        error: undefined,
+        darkMode: false
     },
 
 
@@ -196,7 +197,6 @@ const app = new Vue({
             }
         },
 
-
         classForKey: function(key) {
             return {
                 btn: true,
@@ -204,6 +204,16 @@ const app = new Vue({
                 right: this.gameState && this.gameState.rightKeys.has(key),
                 wrong: this.gameState && this.gameState.wrongKeys.has(key),
             };
+        },
+
+        toggleDarkMode: function() {
+            this.darkMode = !this.darkMode;
+            const body = document.querySelector("body");
+            if (this.darkMode) {
+                body.classList.add("dark");
+            } else {
+                body.classList.remove("dark");
+            }
         }
 
     },
