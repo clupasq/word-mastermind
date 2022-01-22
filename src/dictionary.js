@@ -3,6 +3,7 @@ const path = require("path")
 const {promisify} = require("util")
 
 const readFileAsync = promisify(fs.readFile)
+const readdirAsync = promisify(fs.readdir)
 
 class Dictionary {
 
@@ -36,11 +37,25 @@ class Dictionary {
 
 }
 
+const DICT_DIR = path.join(__dirname, "../dict/");
+
 Dictionary.create = async (dictFileName) => {
-    const contents = await readFileAsync(path.join(__dirname, "../dict", dictFileName), "utf8")
+    const contents = await readFileAsync(path.join(DICT_DIR, dictFileName), "utf8")
     return new Dictionary(contents
         .split("\n")
         .filter(w => w.length > 0))
+}
+
+Dictionary.getAllAvailableDictionaries = async () => {
+    const files = await readdirAsync(DICT_DIR);
+
+    const dictionaries = new Map();
+
+    for (const f of files) {
+        dictionaries.set(f, await Dictionary.create(f));
+    }
+
+    return dictionaries
 }
 
 module.exports = { Dictionary }

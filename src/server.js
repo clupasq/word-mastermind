@@ -5,7 +5,12 @@ const path = require("path")
 const {Game} = require("./game")
 const {Dictionary} = require("./dictionary")
 
-let dictionary;
+let dictionaries;
+let defaultDictionary;
+
+const gameOptions = {
+    totalAttempts: Number(process.env.TOTAL_ATTEMPTS) ?? 5
+};
 
 const gamesById = new Map();
 
@@ -13,9 +18,11 @@ fastify.register(fastifyStatic, {
     root: path.join(__dirname, "../assets/"),
 })
 
-fastify.get("/game/start", (req, res) => {
+fastify.post("/game/start", (req, res) => {
+    const {dictName} = req.body
+    const dictionary = dictionaries.get(dictName) || defaultDictionary;
+    const game = new Game(dictionary, gameOptions)
     const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10)
-    const game = new Game(dictionary)
     gamesById.set(id, game)
     return {
         id,
@@ -41,8 +48,9 @@ fastify.post("/game/submit", (req, res) => {
 
 const start = async () => {
     try {
-        dictionary = await Dictionary.create("en-us-5")
-        await fastify.listen(3000)
+        dictionaries = await Dictionary.getAllAvailableDictionaries()
+        defaultDictionary = dictionaries.get("en-us-5")
+        await fastify.listen(process.env.PORT || 3333)
     } catch (err) {
         fastify.log.error(err)
         process.exit(1)

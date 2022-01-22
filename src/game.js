@@ -72,14 +72,6 @@ class Game {
         }
         this.currentGuess++
 
-        if (this.currentGuess >= this.totalAttempts) {
-            this.finished = true
-            return {
-                result: computeResult(guess, this.word),
-                finished: this.finished,
-                word: this.word,
-            }
-        }
         if (guess === this.word) {
             this.won = true
             this.finished = true
@@ -87,6 +79,14 @@ class Game {
                 finished: true,
                 won: true,
                 result: computeResult(guess, this.word)
+            }
+        }
+        if (this.currentGuess >= this.totalAttempts) {
+            this.finished = true
+            return {
+                result: computeResult(guess, this.word),
+                finished: this.finished,
+                word: this.word,
             }
         }
 

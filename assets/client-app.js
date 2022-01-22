@@ -1,3 +1,15 @@
+const parseQueryString = () => {
+    const queryString = window.location.search;
+    const query = {};
+    const pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+    for (let i = 0; i < pairs.length; i++) {
+        const pair = pairs[i].split('=');
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    return query;
+};
+
+const queryStringParams = parseQueryString();
 
 const app = new Vue({
     el: "#app",
@@ -11,13 +23,22 @@ const app = new Vue({
         ],
 
         gameState: undefined,
+        error: undefined
     },
 
 
     methods: {
 
         startGame: async function() {
-            const response = await fetch("/game/start");
+            const response = await fetch("/game/start", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    dictName: queryStringParams.dictName
+                })
+            });
             const newGameData = await response.json();
             const {id, totalAttempts, wordLength} = newGameData;
             this.gameState = {
@@ -48,6 +69,10 @@ const app = new Vue({
         },
 
         handleNewLetter: async function(key) {
+            if (key === "ENTER" && this.gameState.finished) {
+                this.startGame();
+            }
+
             if (!this.gameState || this.gameState.finished) {
                 return;
             }

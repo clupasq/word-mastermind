@@ -49,4 +49,9 @@ describe("Dictionary", () => {
         })
     })
 
+    test("can get all available dictionaries", async () => {
+        const dicts = await Dictionary.getAllAvailableDictionaries();
+        expect(dicts.has("en-us-5")).toBe(true)
+        expect(dicts.get("en-us-5").hasWord("robot")).toBe(true)
+    });
 })
