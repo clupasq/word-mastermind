@@ -5,10 +5,12 @@ It's like the [MasterMind game](https://en.wikipedia.org/wiki/Mastermind_(board_
 
 ## Why?
 
-The original game only allows one word per day. This one can be played endlessly.
-
-Also, it's possible to fork it and configure it to work with a different dictionary/language.
+* The original game only allows one word per day. This one can be played endlessly.
+* Can work with custom dictionary files
 
 ## Demo
 
-You can try it out [on Glitch](https://word-mastermind.glitch.me/).
+You can try it out on Glitch:
+
+* [English](https://word-mastermind.glitch.me/)
+* [Romanian](https://word-mastermind.glitch.me/?dictName=ro-ro-5)
