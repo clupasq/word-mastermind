@@ -46,12 +46,17 @@ fastify.post("/game/submit", (req, res) => {
     return result
 })
 
+
 const start = async () => {
     try {
         dictionaries = await Dictionary.getAllAvailableDictionaries()
         defaultDictionary = dictionaries.get("en-us-5")
         console.log("Current dictionaries: " + [...dictionaries.keys()])
-        await fastify.listen(process.env.PORT || 3333)
+
+        const port = process.env.PORT || 3333
+        const address = process.env.LISTEN_ADDRESS || ""
+
+        await fastify.listen(port, address)
     } catch (err) {
         fastify.log.error(err)
         process.exit(1)
