@@ -9,7 +9,7 @@ let dictionaries;
 let defaultDictionary;
 
 const gameOptions = {
-    totalAttempts: Number(process.env.TOTAL_ATTEMPTS) ?? 5
+    totalAttempts: Number(process.env.TOTAL_ATTEMPTS) || 7
 };
 
 const gamesById = new Map();
@@ -50,6 +50,7 @@ const start = async () => {
     try {
         dictionaries = await Dictionary.getAllAvailableDictionaries()
         defaultDictionary = dictionaries.get("en-us-5")
+        console.log("Current dictionaries: " + [...dictionaries.keys()])
         await fastify.listen(process.env.PORT || 3333)
     } catch (err) {
         fastify.log.error(err)

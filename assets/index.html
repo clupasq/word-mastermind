@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="popup summary" v-if="gameState.finished">
+            <div class="popup summary" v-if="gameState && gameState.finished">
                 <div v-if="gameState.won">
                 <h1 class="display-6">Success</h1>
                 <hr />
