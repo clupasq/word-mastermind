@@ -14,6 +14,9 @@ You can try it out on Glitch:
 
 * [English](https://word-mastermind.glitch.me/)
 * [Romanian](https://word-mastermind.glitch.me/?dictName=ro-ro-5)
+* [Romanian (6 letter words)](https://word-mastermind.glitch.me/?dictName=ro-ro-6)
+* [Swedish](https://word-mastermind.glitch.me/?dictName=sv-se-5)
+* [Dutch](https://word-mastermind.glitch.me/?dictName=nl-nl-5)
 
 ## How to Play
 
