@@ -45,11 +45,11 @@ There are two options for runnning the program: with Node.JS or in Docker.
 
 ### Running with node
 
-Make sure you have Node.JS 16 installed.
+Make sure you have Node.JS 16 and yarn installed.
 
-In the `word-mastermind` directory, install the dependencies using `yarn install` or `npm install`.
+In the `word-mastermind` directory, install the dependencies using `yarn install`.
 
-Run the server: `npm start`.
+Run the server: `yarn start`.
 
 Go to http://localhost:3333.
 
