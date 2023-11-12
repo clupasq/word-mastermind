@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: hello-world-pipeline
+spec:
+  templates:
+  - name: deploy-app
+    steps:
+    - - name: deploy
+        template: k8s-deploy
+  - name: k8s-deploy
+    container:
+      image: alpine:latest
+      command: [sh, -c]
+      args: ["echo 'Deploying the application'"]
