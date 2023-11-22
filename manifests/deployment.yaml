@@ -22,3 +22,18 @@ spec:
           value: "0.0.0.0"
         - name: PORT
           value: "80"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: word-mastermind-service
+spec:
+  selector:
+    app: words
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
