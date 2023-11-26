@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: word-mastermind
+  name: word-mastermind-deployment
 spec:
   replicas: 1
   selector:
