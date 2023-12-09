@@ -10,7 +10,10 @@ class Dictionary {
     constructor(words) {
         this.length = undefined;
         this.words = [];
-        for (const w of words) {
+        for (var w of words) {
+            // Slices off an invisible character at the end when reading the file
+            w = w.slice(0,-1)    
+
             if (this.length === undefined) {
                 this.length = w.length
             } else if (this.length !== w.length) {
