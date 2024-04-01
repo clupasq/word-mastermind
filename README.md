@@ -43,6 +43,35 @@ cd word-mastermind
 
 There are two options for runnning the program: with Node.JS or in Docker.
 
+
+### Running with Docker
+
+The easiest option is to use Docker.
+You can either pull the latest docker image from the Github Repository, or build it yourself.
+
+To pull the image:
+
+```
+docker pull ghcr.io/clupasq/word-mastermind:latest
+```
+
+To build the image:
+
+```
+cd word-mastermind
+docker build -t word-mastermind .
+cd ..
+```
+
+Once the image is available, you can start a container:
+
+```
+docker run --rm -p "3333:80" word-mastermind
+```
+
+Then, go to http://localhost:3333.
+
+
 ### Running with node
 
 Make sure you have Node.JS 16 and yarn installed.
@@ -50,21 +79,5 @@ Make sure you have Node.JS 16 and yarn installed.
 In the `word-mastermind` directory, install the dependencies using `yarn install`.
 
 Run the server: `yarn start`.
-
-Go to http://localhost:3333.
-
-### Running with Docker
-
-In the `word-mastermind` directory, issue the following command to prepare the Docker image:
-
-```
-docker build -t word-mastermind .
-```
-
-Then run the image:
-
-```
-docker run --rm -p "3333:80" word-mastermind
-```
 
 Go to http://localhost:3333.
