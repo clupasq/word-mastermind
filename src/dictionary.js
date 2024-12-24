@@ -10,14 +10,16 @@ class Dictionary {
     constructor(words) {
         this.length = undefined;
         this.words = [];
+        let word = '';
         for (const w of words) {
+            word = w.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
             if (this.length === undefined) {
-                this.length = w.length
-            } else if (this.length !== w.length) {
+                this.length = word.length
+            } else if (this.length !== word.length) {
                 throw new Error("Inconsistent word lengths")
             }
 
-            this.words.push(w.toUpperCase())
+            this.words.push(word.toUpperCase())
         }
         this.wordSet = new Set(this.words)
     }
