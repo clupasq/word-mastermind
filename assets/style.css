@@ -4,7 +4,7 @@ html, body {
 }
 
 body.dark {
-    background-color: #3a3a3c;
+    background-color: #27445D;
 }
 
 .main-container {
@@ -86,7 +86,7 @@ body.dark .tile.correct {
 }
 
 .btn.key {
-    background-color: #ddd;
+    background-color: #71BBB2;
     margin: 3px;
     height: 2.5em;
     padding: 7px;
@@ -110,7 +110,7 @@ body.dark .btn.key.wrong {
 }
 
 body.dark .btn.key.right {
-    background-color: #6aaa64;
+    background-color: #EFE9D5;
 }
 
 .popup {
