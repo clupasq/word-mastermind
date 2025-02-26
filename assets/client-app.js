@@ -16,9 +16,17 @@ const isDarkModePreferred = () => {
         const [name, value] = cookie.split("=");
         if (name === "darkMode" && value === "true") {
             return true;
+        } else if (name === "darkMode" && value === "false") {
+            return false;
         }
     }
 
+    // If no cookie for dark mode exists fallback to CSS Media-Queries for system-wide dark mode
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return true;
+    }
+
+    // If no cookie, and Media-Queries aren't supported, fallback to light mode
     return false;
 };
 
