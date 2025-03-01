@@ -1,5 +1,5 @@
 const fastify = require("fastify")({ logger: true })
-const fastifyStatic = require("fastify-static")
+const fastifyStatic = require("@fastify/static")
 const path = require("path")
 
 const {Game} = require("./game")
@@ -56,7 +56,7 @@ const start = async () => {
         const port = process.env.PORT || 3333
         const address = process.env.LISTEN_ADDRESS || ""
 
-        await fastify.listen(port, address)
+        await fastify.listen({ port: port, host: address })
     } catch (err) {
         fastify.log.error(err)
         process.exit(1)
