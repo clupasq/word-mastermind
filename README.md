@@ -41,13 +41,13 @@ git clone https://github.com/clupasq/word-mastermind.git
 cd word-mastermind
 ```
 
-There are two options for runnning the program: with Node.JS or in Docker.
+There are two options for running the program: with Node.js or in Docker.
 
 
 ### Running with Docker
 
 The easiest option is to use Docker.
-You can either pull the latest docker image from the Github Repository, or build it yourself.
+You can either pull the latest Docker image from the GitHub Repository, or build it yourself.
 
 To pull the image:
 
@@ -86,7 +86,7 @@ Run the server:
 yarn start
 ```
 
-Open the application:
+Open the application.
 
 
 Go to your browser and navigate to http://localhost:3333
