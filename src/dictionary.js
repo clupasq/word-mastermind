@@ -42,7 +42,8 @@ const DICT_DIR = path.join(__dirname, "../dict/");
 Dictionary.create = async (dictFileName) => {
     const contents = await readFileAsync(path.join(DICT_DIR, dictFileName), "utf8")
     return new Dictionary(contents
-        .split("\n")
+        .split(/\r?\n/)              // Splits cleanly on both \n and \r\n
+        .map(w => w.trim())          // Strips any leftover whitespace
         .filter(w => w.length > 0))
 }
 
